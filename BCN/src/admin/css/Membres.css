@@ -43,7 +43,7 @@ h2 {
   width: 90px;
   height: 90px;
   position: relative;
-  left: 120px;
+  left: 0px;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -88,16 +88,17 @@ h2 {
   justify-content: center;
   align-items: center;
   z-index: 999;
-  padding: 20px;
+  padding: 10px;
 }
 
 /* Box */
 .modal-client {
-  width: 90%;
+  width: 170%;
   max-width: 420px;
+  
   background: #ffffff;
   border-radius: 18px;
-  padding: 28px;
+  padding: 18px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
   animation: popup 0.25s ease;
 }
@@ -111,30 +112,30 @@ h2 {
 }
 
 /* List */
-.client-list {
+.client-listw {
   list-style: none;
-  padding: 0;
+  gap: 0;
   margin: 0;
 }
 
-.client-list li {
-  padding: 10px 11px;
-  margin-bottom: 8px;
+.client-listw li {
+  
+  margin: 0;
   background: #f8fafc;
   border-radius: 10px;
-  font-size: 15px;
+  font-size: 12px;
   color: #374151;
   border-left: 4px solid #A81B1B;
   transition: 0.2s ease;
 }
 
-.client-list li:hover {
+.client-listw li:hover {
   background: #A81B1B;
   color: white;
   transform: translateX(3px);
 }
 
-.client-list strong {
+.client-listw strong {
   color: #111827;
   margin-right: 6px;
 }

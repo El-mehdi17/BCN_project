@@ -43,7 +43,7 @@ useEffect(() => {
 
       <div className="cards">
         {clients.map((client, i) => (
-          <div className="card" key={client.id}>
+          <div className="cardd" key={client.id}>
             <img src={user[i]?.photoUrl!==null ? user[i].photoUrl : images[i] || images[0] } alt="" />
 
             <h3>{client.nomComplet}</h3>
@@ -75,7 +75,7 @@ useEffect(() => {
           >
             <h2>Informations Client</h2>
 
-            <ul className="client-list">
+            <ul className="client-listw">
               <li><strong>Nom :</strong> {selectedClient.nomComplet}</li>
               <li><strong>Email :</strong> {selectedClient.email}</li>
               <li><strong>Poste :</strong> {selectedClient.poste}</li>

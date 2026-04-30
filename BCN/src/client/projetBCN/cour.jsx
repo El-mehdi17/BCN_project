@@ -1,4 +1,4 @@
-import { Route, Routes, Navigate,useLocation } from 'react-router-dom'
+import { Route, Routes, Navigate} from 'react-router-dom'
 import Accueil from './Accueil.jsx'
 import Inscription from './inscription.jsx'
 import NotFound from './NotFound.jsx'
@@ -10,7 +10,7 @@ import Connexion from "./connexion.jsx"
 import ClientProfil from './ClientProfil.jsx'
 import Messages from './Messages.jsx'
 import Evenements from './Evenement.jsx'
-import Corps from '../admin/dashboard/corps.jsx'
+import Corps from "../../admin/dashboard/corps.jsx"
 
 const access = import.meta.env.VITE_access_token
 const user_local = import.meta.env.VITE_USER
@@ -28,8 +28,8 @@ function ClientProtectedRoute({ children }) {
 }
 
 export default function Cour() {
-    let loca=useLocation()
-  const path = loca.pathname;
+  
+  
   return (
     
       <Routes>

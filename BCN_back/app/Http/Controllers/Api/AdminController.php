@@ -204,55 +204,53 @@ class AdminController extends Controller
      * ✅ mise à jour des données d'un administrateur
      * PUT /api/admin/admins/{id}
      */
-    public function updateAdmin(Request $request, $id)
-    {
-        $currentUser = Auth::user();
+   public function updateAdmin(Request $request, $id)
+{
+    $admin = Utilisateur::whereIn('role', ['admin', 'Admin', 'moderator'])
+        ->find($id);
 
-        $admin = Utilisateur::whereIn('role', ['admin', 'Admin', 'moderator'])
-            ->find($id);
-
-        if (!$admin) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Administrateur non trouvé'
-            ], 404);
-        }
-
-        $validator = Validator::make($request->all(), [
-            'nomComplet' => 'sometimes|string|max:255',
-            'email' => 'sometimes|email|unique:utilisateurs,email,' . $id,
-            "telephone" => "nullable|string|max:20",
-            'poste' => 'nullable|string|max:255',
-            'ville' => 'nullable|string|max:255',
-            'entrepriseNom' => 'nullable|string|max:255',
-            'role' => 'nullable|string|in:admin,Admin,moderator',
-            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
-        ] ,[
-            'avatar.image' => 'Le fichier doit être une image',
-            'avatar.mimes' => 'Format accepté : JPG, PNG, GIF, WebP',
-            'avatar.max' => 'L\'image ne doit pas dépasser 2Mo'
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Erreur de validation',
-                'errors' => $validator->errors()
-            ], 422);
-        }
-         $data = $validator->validated();
-         $data['avatar'] = $request->file('avatar')->store('avatars/admins', 'public');// Conserver l'ancien avatar par défaut
-
-        $admin->update($request->only([
-            'nomComplet', 'email', "telephone",'poste', 'ville', 'entrepriseNom', 'role', $data['avatar']
-        ]));
-
+    if (!$admin) {
         return response()->json([
-            'success' => true,
-            'message' => 'Administrateur mis à jour',
-            'admin' => $admin
-        ]);
+            'success' => false,
+            'message' => 'Administrateur non trouvé'
+        ], 404);
     }
+
+    $validator = Validator::make($request->all(), [
+        'nomComplet' => 'sometimes|string|max:255',
+        'email' => 'sometimes|email|unique:utilisateurs,email,' . $id,
+        'telephone' => 'nullable|string|max:20',
+        'poste' => 'nullable|string|max:255',
+        'ville' => 'nullable|string|max:255',
+        'entrepriseNom' => 'nullable|string|max:255',
+        'role' => 'nullable|string|in:admin,Admin,moderator',
+        'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+    ]);
+
+    if ($validator->fails()) {
+        return response()->json([
+            'success' => false,
+            'errors' => $validator->errors()
+        ], 422);
+    }
+
+    $data = $validator->validated();
+
+    // ✅ معالجة الصورة بشكل صحيح
+    if ($request->hasFile('avatar')) {
+        $path = $request->file('avatar')->store('avatars/admins', 'public');
+        $data['avatar'] = $path;
+    }
+
+    // ✅ تحديث البيانات
+    $admin->update($data);
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Administrateur mis à jour',
+        'admin' => $admin
+    ]);
+}
 
     /**
      * ✅ Upload d'une image pour un administrateur

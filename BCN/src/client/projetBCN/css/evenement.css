@@ -2,6 +2,7 @@
 .even-page {
   padding: 40px 25px;
   min-height: 100vh;
+  margin-top: -30px;
   background: linear-gradient(135deg, #f8fafc, #eef2ff);
 }
 

@@ -143,16 +143,6 @@ export default function Connexion() {
   }
 };
 
-// googleAuth
-  const googleLogin  = () => {
-  setLoading(true);
-  window.location.href =
-    "http://localhost:8000/api/auth/google";
-};
-
-  const handleFacebookLogin = () => {
-    setError('Connexion Facebook bientôt disponible');
-  };
 
   useEffect(() => {
     const savedEmail = localStorage.getItem('remembered_email');
@@ -277,7 +267,7 @@ export default function Connexion() {
           </form>
 
           <div className="separator">
-            <span>ou</span>
+            <b>ou</b>
           </div>
 
          

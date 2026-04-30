@@ -523,7 +523,43 @@ public function resetPassword(Request $request)
     /**
      * Google OAuth - Redirection
      */
-    
+    public function redirectToGoogle()
+    {
+        return Socialite::driver('google')->stateless()->redirect();
+    }
+
+    /**
+     * Google OAuth - Callback
+     */
+    public function handleGoogleCallback()
+    {
+        try {
+            $googleUser = Socialite::driver('google')->stateless()->user();
+
+            $user = Utilisateur::updateOrCreate(
+                ['email' => $googleUser->email],
+                [
+                    'nomComplet' => $googleUser->name,
+                    'photoUrl' => $googleUser->avatar,
+                    'password' => Hash::make(Str::random(32)),
+                    'profileCompleted' => false,
+                    'dateInscription' => now(),
+                ]
+            );
+
+            $token = $user->createToken('auth_token')->plainTextToken;
+            $frontendUrl = env('FRONTEND_URL', 'http://localhost:5173');
+
+            return redirect()->to($frontendUrl . "/auth/callback?token={$token}&profile_status=" .
+                ($user->profileCompleted ? 'complete' : 'incomplete'));
+
+        } catch (\Exception $e) {
+            \Log::error('Google OAuth error: ' . $e->getMessage());
+            $frontendUrl = env('FRONTEND_URL', 'http://localhost:5173');
+            return redirect($frontendUrl . '/login?error=google_failed');
+        }
+    }
+
     /**
      * Vérifier si le profil est complet
      */

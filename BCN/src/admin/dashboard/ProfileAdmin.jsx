@@ -275,7 +275,7 @@ const handleUpdateProfile = async (e) => {
 
     // Si pas d'avatar, envoyer en JSON
     if (!formData.avatar) {
-      const response = await axios.put(
+      const response = await axios.post(
         `${adapi}/${currentAdminId}`,
         updateData,
         {
@@ -499,7 +499,7 @@ const handleUpdateProfile = async (e) => {
                 </div>
               )}
             </div>
-            <label className="avatar-upload-btn">
+            <label className="avatar-upload-btni">
               <Camera size={16} />
               <span>Changer la photo</span>
               <input

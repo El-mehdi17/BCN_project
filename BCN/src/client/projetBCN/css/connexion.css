@@ -18,8 +18,9 @@
   display: grid;
   place-items: center;
   min-height: 100vh;
+  margin-top: -30px;
   background: linear-gradient(135deg, var(--rouge) 0%, var(--rouge-clair) 100%);
-  padding: 20px;
+  padding: 80px 20px 20px 20px;
 }
 
 .connexion-wrapper {
@@ -264,11 +265,13 @@ right: 17px;
 .separator::before { left: 0; }
 .separator::after  { right: 0; }
 
-.separator span {
+.separator b {
   background-color: var(--white);
   padding: 0 15px;
   color: var(--gris-text);
-  font-size: 14px;
+  font-size: 19px;
+  text-align: center;
+  width: 100%;
   text-transform: uppercase;
 }
 

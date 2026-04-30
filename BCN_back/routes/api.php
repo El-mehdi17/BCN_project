@@ -123,7 +123,7 @@ Route::middleware('auth:sanctum')->post(
         Route::get('/admins', [AdminController::class, 'listAdmins']);
         Route::post('/admins', [AdminController::class, 'registerAdmin']);
         Route::get('/admins/{id}', [AdminController::class, 'showAdmin']);
-        Route::put('/admins/{id}', [AdminController::class, 'updateAdmin']);
+        Route::post('/admins/{id}', [AdminController::class, 'updateAdmin']);
         Route::delete('/admins/{id}', [AdminController::class, 'deleteAdmin']);
         Route::put('/admins/{id}/change-password', [AdminController::class, 'changeAdminPassword']);
         Route::post('/admins/{id}/update-avatar', [AdminController::class, 'updateAvatar']);

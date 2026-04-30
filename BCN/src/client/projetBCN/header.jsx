@@ -16,7 +16,7 @@ import {
 
 import Logo from "./img/Logo/logod.png";
 import "./css/header.css";
-import HeaderAdmin from "../admin/dashboard/header"
+import HeaderAdmin from "../../admin/dashboard/header"
 
 const access_token=import.meta.env.VITE_access_token;
 const user_local=import.meta.env.VITE_USER
@@ -169,7 +169,7 @@ const nomComplet = user?.nomComplet;
 
   /* ---------------- client desktop ---------------- */
   const ClientDesktopMenu = () => (
-    <div className="rout">
+    <div className="routm">
       <NavLink to={`${APIDASHBOARD}/${nomComplet}/dashboard`}>
         <FaChartBar /> Dashboard
       </NavLink>
@@ -183,7 +183,7 @@ const nomComplet = user?.nomComplet;
       <NavLink to={`${APIDASHBOARD}/${nomComplet}/profil`}>
         <FaUser /> Profil
       </NavLink>
-      <button onClick={handleLogout} className="inscri">
+      <button onClick={handleLogout} className="inscrim">
                 <FaSignOutAlt /> Déconnexion
               </button>
     </div>
@@ -209,11 +209,11 @@ const nomComplet = user?.nomComplet;
           
 
           <NavLink to={`${APIDASHBOARD}/${nomComplet}/profil`}>
-            <FaUser /> Profil
+                <FaUser /> Profil
           </NavLink>
           <button onClick={handleLogout}  className="inscri">
-                    <FaSignOutAlt /> Déconnexion
-                  </button>
+              <FaSignOutAlt /> Déconnexion
+          </button>
         </div>
       )}
     </>

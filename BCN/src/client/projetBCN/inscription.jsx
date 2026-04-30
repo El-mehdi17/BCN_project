@@ -318,7 +318,7 @@ export default function Inscription() {
             </button>
 
             <div className="separator">
-              <span>ou</span>
+              <b>ou</b>
             </div>
 
             <button 

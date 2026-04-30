@@ -62,6 +62,7 @@ a {
   border-radius: 24px;
   padding: 28px;
   margin-top: -40px;
+  margin-bottom: 30px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   position: relative;
   transition: all 0.3s ease;

@@ -167,7 +167,7 @@
   font-weight: 700;
 }
 
-.avatar-upload-btn {
+.avatar-upload-btni {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -182,7 +182,7 @@
   border: none;
 }
 
-.avatar-upload-btn:hover {
+.avatar-upload-btni:hover {
   background-color: #FF4242;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(168, 27, 27, 0.3);
