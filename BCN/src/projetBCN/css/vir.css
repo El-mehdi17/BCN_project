@@ -1,0 +1,382 @@
+/* ===================== */
+/* VARIABLES COULEURS (respect des contrastes) */
+/* ===================== */
+:root {
+  /* Palette principale - rouge bordeaux élégant */
+  --primary: #991b1b;
+  --primary-dark: #7f1d1d;
+  --primary-light: #dc2626;
+  --primary-soft: #fef2f2;
+  
+  /* Neutres (gris accessibles) */
+  --gray-900: #111827;
+  --gray-700: #374151;
+  --gray-600: #4b5563;
+  --gray-500: #6b7280;
+  --gray-300: #d1d5db;
+  --gray-100: #f3f4f6;
+  --gray-50: #f9fafb;
+  
+  /* Fond et surface */
+  --bg-white: #ffffff;
+  --bg-soft: #fef2f2;
+  
+  /* États */
+  --error: #dc2626;
+  --error-bg: #fef2f2;
+  --success: #059669;
+  --success-bg: #ecfdf5;
+  
+  /* Ombres */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* ===================== */
+/* RESET & BASE */
+/* ===================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  line-height: 1.5;
+  background: var(--gray-50);
+  color: var(--gray-900);
+}
+
+/* ===================== */
+/* CONTAINER GÉNÉRAL (nav) */
+/* ===================== */
+nav {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===================== */
+/* CARD PRINCIPALE (.courd) */
+/* ===================== */
+.courd {
+  max-width: 600px;
+  width: 100%;
+  background: var(--bg-white);
+  padding: 30px 25px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--gray-100);
+}
+
+/* Image */
+.imgi img {
+  width: 80px;
+  margin-bottom: 20px;
+}
+
+/* Titre */
+.courd h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: var(--gray-900);
+  font-weight: 600;
+}
+
+/* Texte */
+.courd p {
+  font-size: 14px;
+  color: var(--gray-600);
+  line-height: 1.6;
+}
+
+/* Lien renvoi (bouton style) */
+.courd b {
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--primary);
+  cursor: pointer;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.courd b:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+/* ===================== */
+/* OVERLAY HIDE */
+/* ===================== */
+.hide {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: var(--bg-white);
+  width: 100%;
+  transform: translate(0, -100px);
+  height: 90px;
+  left: 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.hide img {
+  width: 10%;
+  position: sticky;
+  left: 130px;
+  top: -10px;
+}
+
+/* ===================== */
+/* VIR.CSS - PAGE VÉRIFICATION */
+/* ===================== */
+.vir-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  padding: 20px;
+}
+
+.vir-card {
+  background: var(--bg-white);
+  border-radius: 20px;
+  padding: 40px;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: var(--shadow-lg);
+}
+
+.vir-card h1 {
+  text-align: center;
+  color: var(--gray-700);
+  margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.vir-description {
+  text-align: center;
+  color: var(--gray-600);
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+/* ===================== */
+/* FORMULAIRES */
+/* ===================== */
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--gray-700);
+  font-weight: 500;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid var(--gray-300);
+  border-radius: 10px;
+  font-size: 16px;
+  transition: all 0.2s;
+  background: var(--bg-white);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(153, 27, 27, 0.1);
+}
+
+/* ===================== */
+/* BOUTONS */
+/* ===================== */
+.submit-button {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.submit-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.submit-button:active {
+  transform: translateY(0);
+}
+
+.submit-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ===================== */
+/* LIENS */
+/* ===================== */
+.vir-links {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.back-link {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.back-link:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+/* ===================== */
+/* MESSAGES */
+/* ===================== */
+.error-message {
+  background-color: var(--error-bg);
+  color: var(--error);
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  border-left: 4px solid var(--error);
+  font-weight: 500;
+}
+
+.success-message {
+  background-color: var(--success-bg);
+  color: var(--success);
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  border-left: 4px solid var(--success);
+}
+
+.success-message p {
+  margin: 5px 0;
+}
+
+.redirect-message {
+  font-size: 14px;
+  color: var(--gray-500);
+  margin-top: 10px;
+}
+
+.field-error {
+  color: var(--error);
+  font-size: 12px;
+  margin-top: 5px;
+  display: block;
+}
+
+/* ===================== */
+/* RESPONSIVE - MOBILE */
+/* ===================== */
+@media (max-width: 768px) {
+  .courd {
+    padding: 20px;
+    border-radius: 12px;
+    width: 100%;
+  }
+
+  .imgi img {
+    width: 60px;
+  }
+
+  .courd h3 {
+    font-size: 18px;
+    text-align: center;
+  }
+  
+  .courd p {
+    font-size: 13px;
+    text-align: center;
+  }
+
+  .hide {
+    width: 100%;
+    padding: 0 30px;
+    transform: translate(0, -100px);
+  }
+  
+  .hide img {
+    width: 20%;
+    left: 20px;
+    top: 10px;
+  }
+
+  .vir-card {
+    padding: 30px 20px;
+  }
+
+  .vir-card h1 {
+    font-size: 24px;
+  }
+}
+
+/* ===================== */
+/* RESPONSIVE - TABLET */
+/* ===================== */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .courd {
+    max-width: 500px;
+    padding: 25px;
+  }
+
+  .courd h3 {
+    font-size: 18px;
+  }
+}
+
+/* ===================== */
+/* ACCESSIBILITÉ - FOCUS */
+/* ===================== */
+:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ===================== */
+/* SCROLLBAR (optionnel) */
+/* ===================== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--gray-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray-400);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gray-500);
+}

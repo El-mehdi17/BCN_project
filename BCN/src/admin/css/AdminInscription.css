@@ -1,0 +1,788 @@
+/* ============================================
+   INSCRIPTION ADMIN - BCN
+   Design responsive - Mobile First
+   ============================================ */
+
+:root {
+  --primary-red: #A81B1B;
+  --primary-light: #FF4242;
+  --primary-soft: #FF5E5E;
+  --bg-gray: #F0F1F2;
+  --text-dark: #1a1a2e;
+  --text-gray: #718096;
+  --text-light: #a0aec0;
+  --white: #FFFFFF;
+  --success: #10B981;
+  --warning: #F39C12;
+  --danger: #EF4444;
+  --info: #3B82F6;
+  --border-color: #e2e8f0;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== MOBILE FIRST (max-width: 480px) ===== */
+.admin-inscription-container {
+  min-height: 100vh;
+  
+  background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+  padding: 1rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.inscription-wrapper {
+  width: 100%;
+  padding: 0 100px;
+  max-width: 100%;
+  margin: 0 auto;
+  background: var(--white);
+  border-radius: 16px;
+  box-shadow: var(--shadow-md);
+  padding: 1.25rem;
+}
+
+/* ===== EN-TÊTE ===== */
+.inscription-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.header-icon {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto 1rem;
+  background: linear-gradient(135deg, var(--primary-red) 0%, var(--primary-light) 100%);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-size: 24px;
+  box-shadow: 0 6px 15px rgba(168, 27, 27, 0.25);
+}
+
+.inscription-header h1 {
+  color: var(--text-dark);
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  line-height: 1.3;
+}
+
+.inscription-header p {
+  color: var(--text-gray);
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+/* ===== MESSAGES ===== */
+.error-message,
+.success-message {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.error-message {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid var(--danger);
+  color: var(--danger);
+}
+
+.success-message {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid var(--success);
+  color: var(--success);
+}
+
+.error-message svg,
+.success-message svg {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+/* ===== FORMULAIRE ===== */
+.inscription-form {
+  margin-bottom: 1.5rem;
+}
+
+.form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.form-group label {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  color: var(--text-dark);
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+.form-group label svg {
+  color: var(--primary-red);
+  font-size: 0.9rem;
+}
+
+.required {
+  color: var(--danger);
+  margin-left: 0.125rem;
+  font-size: 0.9rem;
+}
+
+/* ===== INPUTS ===== */
+.input-wrapper {
+  position: relative;
+}
+
+.input-wrapper input,
+.role-select {
+  width: 100%;
+  padding: 0.75rem 0.875rem;
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  background: var(--white);
+  color: var(--text-dark);
+}
+
+.input-wrapper input:focus,
+.role-select:focus {
+  outline: none;
+  border-color: var(--primary-red);
+  box-shadow: 0 0 0 3px rgba(168, 27, 27, 0.1);
+}
+
+.input-wrapper input.error {
+  border-color: var(--danger);
+}
+
+.input-wrapper input:disabled,
+.role-select:disabled {
+  background: #f8f9fa;
+  color: var(--text-light);
+  cursor: not-allowed;
+  border-color: #d1d5db;
+}
+
+.input-wrapper input::placeholder {
+  color: var(--text-light);
+  font-size: 0.85rem;
+}
+
+/* Password toggle */
+.password-wrapper {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--text-light);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+  z-index: 2;
+}
+
+.password-toggle:hover {
+  color: var(--primary-red);
+}
+
+.password-toggle svg {
+  font-size: 1rem;
+}
+
+/* Role select */
+.role-select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23718096' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 14px;
+}
+
+/* Field error */
+.field-error {
+  color: var(--danger);
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.field-error::before {
+  content: "⚠️";
+  font-size: 0.7rem;
+}
+
+/* ===== UPLOAD IMAGE ===== */
+.image-upload-area {
+  border: 2px dashed var(--border-color);
+  border-radius: 10px;
+  min-height: 120px;
+  transition: all 0.3s ease;
+  background: #fafbfc;
+}
+
+.image-upload-area:hover {
+  border-color: var(--primary-red);
+  background: rgba(168, 27, 27, 0.02);
+}
+
+.upload-label {
+  display: block;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+.upload-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1rem;
+  color: var(--text-light);
+  text-align: center;
+}
+
+.upload-placeholder svg {
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+  opacity: 0.6;
+}
+
+.upload-placeholder span {
+  font-size: 0.85rem;
+  margin-bottom: 0.25rem;
+}
+
+.upload-placeholder small {
+  font-size: 0.7rem;
+  opacity: 0.7;
+}
+
+.image-preview-container {
+  position: relative;
+  padding: 0.75rem;
+}
+
+.image-preview-container img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.remove-image-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--danger);
+  color: var(--white);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.remove-image-btn:hover {
+  background: #dc2626;
+  transform: scale(1.1);
+}
+
+.remove-image-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.remove-image-btn svg {
+  font-size: 0.9rem;
+}
+
+/* ===== ACTIONS ===== */
+.form-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.submit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1rem;
+  background: linear-gradient(135deg, var(--primary-red) 0%, var(--primary-light) 100%);
+  color: var(--white);
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(168, 27, 27, 0.2);
+  order: 1;
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(168, 27, 27, 0.3);
+}
+
+.submit-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.cancel-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 1rem;
+  background: var(--white);
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  color: var(--text-gray);
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  order: 2;
+}
+
+.cancel-btn:hover {
+  background: #f8f9fa;
+  border-color: #cbd5e0;
+  color: var(--text-dark);
+}
+
+/* ===== INFO ===== */
+.inscription-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: rgba(168, 27, 27, 0.04);
+  border-radius: 10px;
+  border-left: 3px solid var(--primary-red);
+}
+
+.inscription-info svg {
+  color: var(--primary-red);
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+.inscription-info p {
+  color: var(--text-gray);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ===== SPINNER ===== */
+.spinner-small {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: var(--white);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===== RESPONSIVE - TABLETTE (min-width: 481px) ===== */
+@media (min-width: 481px) {
+  .admin-inscription-container {
+    padding: 1.5rem;
+  }
+  
+  .inscription-wrapper {
+    max-width: 540px;
+    border-radius: 20px;
+    padding: 1.75rem;
+  }
+  
+  .header-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 28px;
+    border-radius: 16px;
+  }
+  
+  .inscription-header h1 {
+    font-size: 1.6rem;
+  }
+  
+  .inscription-header p {
+    font-size: 0.9rem;
+  }
+  
+  .form-group label {
+    font-size: 0.9rem;
+  }
+  
+  .input-wrapper input,
+  .role-select {
+    padding: 0.8rem 1rem;
+    font-size: 0.95rem;
+  }
+  
+  .image-upload-area {
+    min-height: 140px;
+  }
+  
+  .image-preview-container img {
+    height: 140px;
+  }
+  
+  .upload-placeholder svg {
+    font-size: 2rem;
+  }
+  
+  .form-actions {
+    flex-direction: row;
+  }
+  
+  .submit-btn {
+    flex: 2;
+    order: 2;
+  }
+  
+  .cancel-btn {
+    flex: 1;
+    order: 1;
+  }
+  
+  .inscription-info p {
+    font-size: 0.85rem;
+  }
+}
+
+/* ===== RESPONSIVE - DESKTOP (min-width: 769px) ===== */
+@media (min-width: 769px) {
+  .admin-inscription-container {
+    padding: 2rem;
+  }
+  
+  .inscription-wrapper {
+    max-width: 900px;
+    border-radius: 24px;
+    padding: 2.5rem;
+  }
+  
+  .header-icon {
+    width: 70px;
+    height: 70px;
+    font-size: 32px;
+    border-radius: 18px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .inscription-header {
+    margin-bottom: 2.5rem;
+  }
+  
+  .inscription-header h1 {
+    font-size: 2rem;
+  }
+  
+  .inscription-header p {
+    font-size: 1rem;
+  }
+  
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  
+  .form-column {
+    gap: 1.25rem;
+  }
+  
+  .input-wrapper input,
+  .role-select {
+    padding: 0.875rem 1rem;
+    border-radius: 12px;
+  }
+  
+  .image-upload-area {
+    min-height: 160px;
+    border-radius: 12px;
+  }
+  
+  .image-preview-container img {
+    height: 160px;
+  }
+  
+  .form-actions {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+  }
+  
+  .submit-btn,
+  .cancel-btn {
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    font-size: 1rem;
+  }
+  
+  .inscription-info {
+    padding: 1.25rem 1.5rem;
+    border-radius: 12px;
+  }
+  
+  .inscription-info p {
+    font-size: 0.9rem;
+  }
+}
+
+/* ===== RESPONSIVE - LARGE DESKTOP (min-width: 1025px) ===== */
+@media (min-width: 1025px) {
+  .inscription-wrapper {
+    max-width: 1000px;
+  }
+  
+  .form-grid {
+    gap: 2.5rem;
+  }
+}
+
+/* ===== HOVER EFFECTS (Desktop only) ===== */
+@media (hover: hover) {
+  .input-wrapper input:hover:not(:disabled):not(:focus) {
+    border-color: #cbd5e0;
+  }
+  
+  .role-select:hover:not(:disabled):not(:focus) {
+    border-color: #cbd5e0;
+  }
+  
+  .upload-label:hover {
+    opacity: 0.9;
+  }
+}
+
+/* ===== ACCESSIBILITY - FOCUS VISIBLE ===== */
+.input-wrapper input:focus-visible,
+.role-select:focus-visible,
+.submit-btn:focus-visible,
+.cancel-btn:focus-visible {
+  outline: 2px solid var(--primary-red);
+  outline-offset: 2px;
+}
+
+/* ===== DARK MODE SUPPORT (optionnel) ===== */
+@media (prefers-color-scheme: dark) {
+  .admin-inscription-container {
+    background: linear-gradient(135deg, #0f1419 0%, #1a1f2e 100%);
+  }
+  
+  .inscription-wrapper {
+    background: #1e2432;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+  
+  .inscription-header h1 {
+    color: #f0f4f8;
+  }
+  
+  .inscription-header p {
+    color: #9ca3af;
+  }
+  
+  .form-group label {
+    color: #e5e7eb;
+  }
+  
+  .input-wrapper input,
+  .role-select {
+    background: #2d3748;
+    border-color: #4a5568;
+    color: #f0f4f8;
+  }
+  
+  .input-wrapper input::placeholder {
+    color: #9ca3af;
+  }
+  
+  .input-wrapper input:disabled,
+  .role-select:disabled {
+    background: #1e2432;
+    color: #6b7280;
+  }
+  
+  .image-upload-area {
+    background: #2d3748;
+    border-color: #4a5568;
+  }
+  
+  .cancel-btn {
+    background: #2d3748;
+    border-color: #4a5568;
+    color: #d1d5db;
+  }
+  
+  .cancel-btn:hover {
+    background: #374151;
+  }
+  
+  .inscription-info {
+    background: rgba(168, 27, 27, 0.1);
+  }
+  
+  .inscription-info p {
+    color: #d1d5db;
+  }
+  
+  .password-toggle {
+    color: #9ca3af;
+  }
+  
+  .password-toggle:hover {
+    color: var(--primary-light);
+  }
+  
+  .role-select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  }
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  .admin-inscription-container {
+    background: white;
+    padding: 0;
+  }
+  
+  .inscription-wrapper {
+    box-shadow: none;
+    padding: 1rem;
+  }
+  
+  .form-actions,
+  .image-upload-area,
+  .password-toggle {
+    display: none;
+  }
+  
+  .input-wrapper input,
+  .role-select {
+    border: 1px solid #000;
+    background: white;
+    color: black;
+  }
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.inscription-wrapper {
+  animation: slideUp 0.4s ease;
+}
+
+/* ===== LOADING STATE ===== */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.loading-spinner-large {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}

@@ -1,0 +1,246 @@
+/* NotFound.css */
+
+.notfound-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #F0F1F2 0%, #ffffff 100%);
+  display: flex;
+  position: relative;
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+}
+
+.notfound-content {
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Animation 404 */
+.error-code {
+  margin-bottom: 2rem;
+  font-size: 8rem;
+  font-weight: 800;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.digit {
+  display: inline-block;
+  animation: bounce 0.6s ease-out;
+  background: linear-gradient(135deg, #A81B1B, #FF4242);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 10px 30px rgba(168, 27, 27, 0.1);
+}
+
+.digit:nth-child(1) { animation-delay: 0s; }
+.digit:nth-child(2) { animation-delay: 0.1s; }
+.digit:nth-child(3) { animation-delay: 0.2s; }
+
+/* Typographie */
+.error-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #A81B1B;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.error-description {
+  font-size: 1.125rem;
+  color: #A1A1AA;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+/* Suggestions */
+.suggestions {
+  background: rgba(240, 241, 242, 0.7);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.suggestion-text {
+  color: #A81B1B;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.suggestions ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.suggestions li {
+  color: #A1A1AA;
+  padding: 0.5rem 0;
+  font-size: 0.95rem;
+}
+
+/* Boutons */
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 0.875rem 1.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #A81B1B, #FF4242);
+  color: white;
+  box-shadow: 0 4px 15px rgba(168, 27, 27, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(168, 27, 27, 0.4);
+  background: linear-gradient(135deg, #FF4242, #A81B1B);
+}
+
+.btn-secondary {
+  background: #F0F1F2;
+  color: #A81B1B;
+  border: 2px solid rgba(168, 27, 27, 0.2);
+}
+
+.btn-secondary:hover {
+  background: #ffffff;
+  border-color: #FF4242;
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* Illustration */
+.illustration {
+  margin-top: 2rem;
+  opacity: 0.8;
+  transition: transform 0.3s ease;
+}
+
+.illustration:hover {
+  transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .notfound-container {
+    padding: 1.5rem;
+  }
+
+  .error-code {
+    font-size: 5rem;
+  }
+
+  .error-title {
+    font-size: 1.5rem;
+  }
+
+  .error-description {
+    font-size: 1rem;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .suggestions {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .error-code {
+    font-size: 3.5rem;
+    gap: 0.25rem;
+  }
+
+  .digit {
+    font-size: 3.5rem;
+  }
+
+  .error-title {
+    font-size: 1.25rem;
+  }
+
+  .illustration svg {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+/* Dark mode support (optionnel) */
+@media (prefers-color-scheme: dark) {
+  .notfound-container {
+    background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+  }
+  
+  .suggestions {
+    background: rgba(50, 50, 55, 0.7);
+  }
+  
+  .btn-secondary {
+    background: #2d2d2d;
+    color: #FF4242;
+  }
+  
+  .btn-secondary:hover {
+    background: #3d3d3d;
+  }
+}

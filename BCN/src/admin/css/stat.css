@@ -1,0 +1,701 @@
+/* =========================
+   GLOBAL & RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f7f8fc;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.acrticle_stat {
+  padding: 32px;
+  background: #f7f8fc;
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+  color: #1f2937;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* =========================
+   SECTION TITLES
+========================= */
+.nav_1 h2,
+.nav_3 h3 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #A81B1B;
+  margin-bottom: 24px;
+  letter-spacing: -0.3px;
+}
+
+.nav_3 {
+  margin-top: 48px;
+}
+.nav_1{
+    display: grid;
+    grid-template-rows: auto 1fr; /* العنوان يأخذ حجمه الطبيعي */
+    grid-template-columns: 1fr;   /* عمود واحد */
+}
+
+/* =========================
+   STATS CARDS (Total Membres, Événements, Bénéfices)
+========================= */
+.cashi {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-bottom: 16px;
+}
+
+.carti {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 28px;
+  margin-top: -40px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  position: relative;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.carti:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+}
+
+.carti h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #9CA3AF;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  text-align: left;
+  letter-spacing: 0.5px;
+}
+
+.carti h3 {
+  font-size: 33px;
+  text-align: left;
+  margin: 20px 0 22px 0;
+  font-weight: 800;
+  color: #111827;
+}
+
+.carti p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0;
+  color: #10b981;
+}
+
+.carti .iconi {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  color: #A81B1B;
+  background: rgba(168, 27, 27, 0.1);
+  padding: 10px;
+  border-radius: 16px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Bénéfices card specific */
+.carti:last-child p {
+  color: #FF5E5E;
+}
+
+.carti:last-child p::before {
+  content: "DH";
+  margin-right: 4px;
+}
+
+/* =========================
+   EVENT HEADER
+========================= */
+.moon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.moon h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.moon p {
+  color: #A81B1B;
+  font-weight: 600;
+  font-size: 14px;
+  margin: 0;
+  background: rgba(168, 27, 27, 0.08);
+  padding: 6px 14px;
+  border-radius: 20px;
+}
+
+/* =========================
+   EVENTS GRID
+========================= */
+.attente {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 28px;
+}
+
+.back {
+  background: white;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.back:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+.back img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background: linear-gradient(135deg, #FF5E5E 0%, #A81B1B 100%);
+}
+
+.back .moon {
+  padding: 18px 18px 8px;
+}
+
+.back .moon p:first-child {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+  background: transparent;
+  padding: 0;
+}
+.nav_3{
+    display: grid;
+    margin-top: -40px;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr; 
+}
+.p2 {
+  font-size: 13px !important;
+  color: #9CA3AF !important;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+.p3,
+.p4 {
+  padding: 0 18px;
+  color: #6b7280;
+  margin: 8px 0;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hadui {
+  padding: 14px 18px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #F0F1F2;
+  margin-top: 8px;
+}
+
+.p5 {
+  color: #A81B1B;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.p6 {
+  color: #9CA3AF;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* =========================
+   MENU (3 points)
+========================= */
+.event-menu-container {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 30;
+}
+
+.menu-trigger {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  color: #6b7280;
+  font-size: 18px;
+}
+
+.menu-trigger:hover {
+  background: white;
+  transform: scale(1.05);
+  color: #A81B1B;
+}
+
+.event-dropdown-menu {
+  position: absolute;
+  top: 44px;
+  right: 0;
+  width: 170px;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+  border: 1px solid #F0F1F2;
+}
+
+.menu-item {
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.menu-item:hover {
+  background: #F0F1F2;
+}
+
+.menu-item.delete {
+  color: #FF4242;
+}
+
+.menu-item.delete:hover {
+  background: rgba(255, 66, 66, 0.08);
+}
+
+/* =========================
+   REGISTERED BADGE
+========================= */
+.registered-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: #10b981;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 30px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  z-index: 20;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* =========================
+   MODAL CONFIRMATION
+========================= */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-confirm {
+  width: 450px;
+  max-width: 92%;
+  background: white;
+  border-radius: 24px;
+  padding: 28px;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.modal-close {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: #9CA3AF;
+  transition: color 0.2s;
+}
+
+.modal-close:hover {
+  color: #A81B1B;
+}
+
+.modal-body {
+  margin-top: 20px;
+}
+
+.event-name {
+  font-weight: 700;
+  color: #A81B1B;
+}
+
+.warning-text {
+  color: #FF4242;
+  font-weight: 500;
+}
+
+.modal-actions {
+  margin-top: 28px;
+  display: flex;
+  gap: 12px;
+}
+
+.btn-cancel,
+.btn-delete {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.btn-cancel {
+  background: #F0F1F2;
+  color: #4b5563;
+}
+
+.btn-cancel:hover {
+  background: #e5e7eb;
+  transform: translateY(-1px);
+}
+
+.btn-delete {
+  background: #A81B1B;
+  color: white;
+}
+
+.btn-delete:hover {
+  background: #FF4242;
+  transform: translateY(-1px);
+}
+
+/* =========================
+   TOAST NOTIFICATIONS
+========================= */
+.toast-notification {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  padding: 14px 20px;
+  border-radius: 16px;
+  color: white;
+  font-weight: 600;
+  z-index: 10000;
+  animation: slideInRight 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.toast-notification.success {
+  background: #10b981;
+}
+
+.toast-notification.error {
+  background: #FF4242;
+}
+
+/* =========================
+   EDIT FORM INLINE
+========================= */
+.edit-form-inline {
+  padding: 20px;
+}
+
+.edit-input,
+.edit-textarea {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  border-radius: 14px;
+  border: 1.5px solid rgba(0, 0, 0, 0.08);
+  outline: none;
+  font-family: inherit;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.edit-input:focus,
+.edit-textarea:focus {
+  border-color: #FF4242;
+  box-shadow: 0 0 0 3px rgba(255, 66, 66, 0.1);
+}
+
+.edit-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.edit-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.btn-save,
+.btn-cancel-edit {
+  flex: 1;
+  border: none;
+  padding: 12px;
+  border-radius: 14px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-save {
+  background: #A81B1B;
+  color: white;
+}
+
+.btn-save:hover {
+  background: #FF4242;
+  transform: translateY(-1px);
+}
+
+.btn-cancel-edit {
+  background: #F0F1F2;
+  color: #4b5563;
+}
+
+.btn-cancel-edit:hover {
+  background: #e5e7eb;
+}
+
+/* =========================
+   LOADING & EMPTY STATES
+========================= */
+.loading,
+.no-events {
+  background: white;
+  border-radius: 20px;
+  padding: 48px 25px;
+  text-align: center;
+  color: #9CA3AF;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  font-weight: 500;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.loading::before {
+  content: "";
+  width: 24px;
+  height: 24px;
+  border: 3px solid #F0F1F2;
+  border-top-color: #A81B1B;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+@media (max-width: 1024px) {
+  .acrticle_stat {
+    padding: 24px;
+  }
+  
+  .carti h3 {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .acrticle_stat {
+    padding: 20px;
+  }
+
+  .nav_1 h2,
+  .nav_3 h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .cashi {
+    gap: 16px;
+  }
+
+  .carti {
+    padding: 20px;
+  }
+
+  .carti h3 {
+    font-size: 32px;
+  }
+  
+  .carti h4 {
+    font-size: 13px;
+  }
+
+  .attente {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .edit-row {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+  }
+  
+  .modal-confirm {
+    padding: 20px;
+  }
+  
+  .moon {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .acrticle_stat {
+    padding: 16px;
+  }
+  
+  .carti h3 {
+    font-size: 28px;
+  }
+  
+  .carti .iconi {
+    top: 16px;
+    right: 16px;
+    padding: 8px;
+  }
+  
+  .back img {
+    height: 160px;
+  }
+}
+
+/* =========================
+   UTILITY CLASSES
+========================= */
+.text-red {
+  color: #A81B1B;
+}
+
+.text-red-light {
+  color: #FF4242;
+}
+
+.text-gray {
+  color: #9CA3AF;
+}
+
+.bg-red-light {
+  background: rgba(255, 66, 66, 0.1);
+}
+
+.bg-gray {
+  background: #F0F1F2;
+}
