@@ -1,25 +1,21 @@
 import api from './api';
 
 class UserService {
-  // الحصول على جميع المستخدمين
-  async getUsers(params = {}) {
+    async getUsers(params = {}) {
     const response = await api.get('/admin/utilisateurs', { params });
     return response.data;
   }
 
-  // الحصول على مستخدم محدد
   async getUser(id) {
     const response = await api.get(`/admin/utilisateurs/${id}`);
     return response.data;
   }
 
-  // حذف مستخدم
   async deleteUser(id) {
     const response = await api.delete(`/admin/utilisateurs/${id}`);
     return response.data;
   }
 
-  // الحصول على قائمة المشرفين
   async getAdmins() {
     const response = await api.get('/admin/admins');
     return response.data;

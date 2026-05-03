@@ -74,7 +74,7 @@ const filteredEvents = evenements.filter(ev =>
                 evenement.imageUrl
                   ? evenement.imageUrl.startsWith("http")
                     ? evenement.imageUrl
-                    : `${Storage}/${evenement.imageUrl}`
+                    : `/${Storage}/${evenement.imageUrl}`
                   : "/default-event.jpg"
               }
               alt={evenement.titre}

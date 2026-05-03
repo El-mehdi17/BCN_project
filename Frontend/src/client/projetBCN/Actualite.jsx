@@ -20,7 +20,7 @@ export default function Actualite() {
     index: i
   }))
   
-  console.log("test", data)
+  
   
   useEffect(() => {
     if (data.length > 0 && !Img) {

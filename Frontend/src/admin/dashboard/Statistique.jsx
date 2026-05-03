@@ -27,7 +27,7 @@ export default function Statistique() {
 // percentage utilisé pour stocker le pourcentage de croissance des membres par rapport au mois précédent. Il est initialisé à 0 et mis à jour après l'appel à l'API dans la fonction loadStats, en utilisant les données reçues de l'API pour calculer le pourcentage de croissance. Ce pourcentage est ensuite affiché dans le dashboard à côté du nombre total de membres.    
     let [percentage, setPercentage] = useState(0);
 
-
+console.log(evenements)
     const [eventParticipantsCount, setEventParticipantsCount] = useState({});
     const [menuOpen, setMenuOpen] = useState(null);
     const [showDeleteConfirm, setShowDeleteConfirm] = useState(null);
@@ -550,7 +550,7 @@ export default function Statistique() {
                                             src={
   evenement.imageUrl?.startsWith("http")
     ? evenement.imageUrl
-    : `http://localhost:8000/storage/${evenement.imageUrl}`
+    : `http://localhost:8000/api/storage/${evenement.imageUrl}`
 }
                                             alt={evenement.titre || 'Événement'}
                                             onError={(e) => {
